@@ -1,7 +1,10 @@
 echo "[*] Creating 'unclosed-file' container"
 
+#Some Importent things:
 #Please provide the script with user for the container and the c file name
 #The user will be created with the default password 'Aa123456'
+#In your C code, please use USERID when reffering to the UID you want to change to in setreuid
+	#The script will populate this value in your script
 
 user="unclosed"
 fileName="unclosed-file" #Without .c

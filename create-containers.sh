@@ -17,7 +17,7 @@ if [ -d "/rootfs" ]
 then
 	echo "[-] /rootfs already exist"
 else
-    cp -f ./rootfs /rootfs
+    cp -rf ./rootfs /rootfs
 	mkdir /rootfs/boot
 	mkdir /rootfs/home
 	mkdir /rootfs/media
