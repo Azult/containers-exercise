@@ -18,6 +18,15 @@ then
 	echo "[-] /rootfs already exist"
 else
     cp -f ./rootfs /rootfs
+	mkdir /rootfs/boot
+	mkdir /rootfs/home
+	mkdir /rootfs/media
+	mkdir /rootfs/mnt
+	mkdir /rootfs/opt
+	mkdir /rootfs/proc
+	mkdir /rootfs/srv
+	mkdir /rootfs/sys
+	mkdir /rootfs/tmp
 fi
 
 for i in $(ls -d ./Containers/*/)
