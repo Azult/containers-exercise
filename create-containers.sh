@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 apt-get install build-essential -y
 

@@ -47,6 +47,9 @@ int main(int argc, char **argv) {
 
     if (waitpid(pid, NULL, 0) == -1)  /* Wait for child to exit */
         errExit("waitpid");
+    else{
+	umount("/rootfs/proc");
+    }
 
 
 }

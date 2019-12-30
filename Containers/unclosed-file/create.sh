@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "[*] Creating 'unclosed-file' container"
 
 #Some Importent things:
@@ -13,11 +14,11 @@ if [ -d "/rootfs/home/$user" ]
 then
 	echo "[-] 'unclosed-file' container already exist"
 else
-    mkdir /rootfs/home/$user
-    cp .$(echo $0|cut -d '.' -f2)$fileName.c /rootfs/home/$user/$fileName.c
-    sed -i "1i#define USERID $(id -u)" /rootfs/home/$user/$fileName.c
-    gcc /rootfs/home/$user/$fileName.c -o /rootfs/home/$user/$fileName && chmod u+s /rootfs/home/$user/$fileName
-	useradd -s /rootfs/home/$user/$fileName -d /rootfs/home/$user -p Aa123345 $user
-	echo "$user:x:$(id -u):$(id -g)::/home/$user/$fileName" >> /rootfs/etc/passwd
+	mkdir /rootfs/home/$user
+	useradd -s /rootfs/home/$user/$fileName -d /rootfs/home/$user -p Aa123456 $user
+	cp .$(echo $0|cut -d '.' -f2)$fileName.c /rootfs/home/$user/$fileName.c
+	sed -i "1i#define USERID $(id -u $user)" /rootfs/home/$user/$fileName.c
+	gcc /rootfs/home/$user/$fileName.c -o /rootfs/home/$user/$fileName && chmod u+s /rootfs/home/$user/$fileName
+	tail -n 1 /etc/passwd $1 | while read x; do echo "${x///rootfs/}"; done >> /rootfs/etc/passwd
 fi
 
