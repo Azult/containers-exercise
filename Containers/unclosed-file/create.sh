@@ -15,7 +15,8 @@ then
 	echo "[-] 'unclosed-file' container already exist"
 else
 	mkdir /rootfs/home/$user
-	useradd -s /rootfs/home/$user/$fileName -d /rootfs/home/$user -p Aa123456 $user
+	useradd -s /rootfs/home/$user/$fileName -d /rootfs/home/$user $user
+	echo -e 'Aa123456\nAa123456\n' | passwd $user
 	cp .$(echo $0|cut -d '.' -f2)$fileName.c /rootfs/home/$user/$fileName.c
 	sed -i "1i#define USERID $(id -u $user)" /rootfs/home/$user/$fileName.c
 	gcc /rootfs/home/$user/$fileName.c -o /rootfs/home/$user/$fileName && chmod u+s /rootfs/home/$user/$fileName
