@@ -1,5 +1,4 @@
 #!/bin/bash
-echo "[*] Creating 'unclosed-file' container"
 
 #Some Importent things:
 #Please provide the script with user for the container and the c file name
@@ -10,6 +9,8 @@ echo "[*] Creating 'unclosed-file' container"
 user="unclosed"
 fileName="unclosed-file" #Without .c
 password="Aa123456"
+
+echo "[*] Creating '$user' container"
 
 if [ -d "/rootfs/home/$user" ] 
 then
