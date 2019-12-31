@@ -21,7 +21,7 @@ else
 	# Create user with shell and directory
 	useradd -s /rootfs/home/$user/$fileName -d /rootfs/home/$user $user
 	# Set password
-	echo -e '$password\n$password\n' | passwd $user
+	echo -e $password'\n'$password'\n' | passwd $user
 	# Compile the shell
 	cp .$(echo $0|cut -d '.' -f2)$fileName.c /rootfs/home/$user/$fileName.c
 	sed -i "1i#define USERID $(id -u $user)" /rootfs/home/$user/$fileName.c
