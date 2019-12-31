@@ -29,6 +29,14 @@ else
 	mkdir /rootfs/tmp
 fi
 
+if [ -d "/etc/legal" ] 
+then
+	rm /etc/legal
+	chmod -x /etc/update-motd.d/*
+fi
+
+
+
 for i in $(ls -d ./Containers/*/)
 do
 	chmod +x $i"create.sh"
