@@ -1,3 +1,6 @@
+#ifndef USERID
+  #define USERID 1000
+#endif
 #define _GNU_SOURCE
 #define _DEFAULT_SOURCE
 #include <sys/wait.h>
@@ -25,7 +28,7 @@ int main(int argc, char **argv) {
     if (fd == -1)
       errExit("open");
 
-    printf("\n\n\033[1;31mStage 1\n\n\n\n");
+    printf("\n\n\033[1;31munclosed file\n\n\n\n");
     printf("\t/etc/shadow is opened.\n\tIts file descriptor is (%d)\n", fd);
     printf("\tUser found with uid %d, spawning shell...\n",getuid());
     printf("\tCould you read the opened file's content?\n\n\n\n\033[0m\n");
