@@ -2,15 +2,15 @@
 
 apt-get install build-essential -y
 
-# Docker install
-# echo "[*] Install Docker"
-# apt install apt-transport-https ca-certificates curl software-properties-common -y
-# curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-# add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
-# apt update
-# apt-cache policy docker-ce
-# apt install docker-ce -y
-# service docker start
+Docker install
+echo "[*] Install Docker"
+apt install apt-transport-https ca-certificates curl software-properties-common -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+apt update
+apt-cache policy docker-ce
+apt install docker-ce -y
+service docker start
 
 
 if [ -d "/rootfs" ] 
@@ -27,6 +27,8 @@ else
 	mkdir /rootfs/srv
 	mkdir /rootfs/sys
 	mkdir /rootfs/tmp
+	mknod -m 0666 /rootfs/dev/random c 1 8
+	mknod -m 0666 /rootfs/dev/urandom c 1 9
 fi
 
 if [ -d "/etc/legal" ] 
